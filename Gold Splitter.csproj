@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,6 +6,13 @@
     <RootNamespace>GoldSplitter</RootNamespace>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>Gold Splitter</Title>
+    <Description>Allows you to do some commands to ease up calculating on gold in Pathfinder 2e!</Description>
+    <PackageProjectUrl>https://github.com/AnOddDoorKnight/Gold-Splitter</PackageProjectUrl>
+    <VersionPrefix>1.1.0</VersionPrefix>
+    <FileVersion>$(VersionPrefix)</FileVersion>
+    <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+    <StartupObject>GoldSplitter.Program</StartupObject>
+    <IsPublishable>True</IsPublishable>
   </PropertyGroup>
-
 </Project>
