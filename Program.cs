@@ -53,15 +53,37 @@ internal static class Program
 					throw new InvalidOperationException();
 			}
 		}),
+		new ("Stabilize, Takes some values higher than ten and puts them as their higher counterparts.", package =>
+		{
+			Console.WriteLine(package.DisperseToAppropriateCoinValues());
+		}),
 	};
 	static void Main()
 	{
-		GoldPackage gold = GoldPackage.HumanInput();
+		PrintTitle();
+		Console.WriteLine("[1] Use raw copper values, [2] Use a 'package'");
+		GoldPackage gold;
+		switch (int.Parse(Console.ReadLine() ?? "1"))
+		{
+			case 1:
+				Console.Write("Copper: ");
+				gold = new GoldPackage(0, 0, 0, int.Parse(Console.ReadLine() ?? "0"));
+				break;
+			case 2:
+				gold = GoldPackage.HumanInput();
+				break;
+			default:
+				throw new IndexOutOfRangeException();
+		}
 		Console.WriteLine("Choose an action:");
 		for (int i = 0; i < actions.Length; i++)
 			Console.WriteLine($"{i + 1}. {actions[i].Name}");
 		actions[int.Parse(Console.ReadLine() ?? "0") - 1].Action.Invoke(gold);
 		Console.ReadLine();
+	}
+	static void PrintTitle()
+	{
+		Console.Title = "Gold Splitter : https://github.com/AnOddDoorKnight/Gold-Splitter";
 	}
 }
 public record NamedAction<T>(string Name, Action<T> Action);
